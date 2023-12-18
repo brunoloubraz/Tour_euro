@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    image_data: {
+    imageData: {
       type: DataTypes.BLOB('long'),
       allowNull: false,
     },
