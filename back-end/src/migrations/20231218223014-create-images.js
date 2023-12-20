@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       imageData: {
-        type: Sequelize.BLOB('long'),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       userId: {
