@@ -29,18 +29,17 @@ module.exports = (sequelize, Datatypes) => {
         model: 'User',
         key: 'id',
       },
-      field: 'user_id'
     }
   }, 
   {
     tableName: 'posts',
     timestamps: false,
-    underscored: true
+    // underscored: true
   });
   Post.associate = (models) => {
     Post.belongsTo(
       models.User,
-      {foreignKey: 'user_id', as: 'user'}
+      {foreignKey: 'userId', as: 'user'}
     )
   };
   return Post;

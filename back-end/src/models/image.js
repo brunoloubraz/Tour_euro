@@ -25,19 +25,19 @@ module.exports = (sequelize, DataTypes) => {
         model: 'User',
         key: 'id',
       },
-      field: 'user_id'
+      field: 'userId'
     },
   },
   {
     tableName: 'images',
     timestamps: false,
-    underscored: true,
+    // underscored: true,
   });
 
   Image.associate = (models) => {
     Image.belongsTo(
       models.User,
-      { foreignKey: 'user_id', as: 'user' }
+      { foreignKey: 'userId', as: 'user' }
     )
   };
   return Image;
