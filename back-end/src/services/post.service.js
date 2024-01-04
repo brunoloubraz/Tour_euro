@@ -5,6 +5,9 @@ const getPosts = () => {
   return response;
 }
 
+const removePost = id => Post.destroy({ where: { id: id } })
+
 module.exports = {
   getPosts,
+  removePost,
 };

@@ -2,7 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 
-const { usersController, imagesController, postsController} = require('./controllers/index')
+const { usersController, imagesController, postsController, loginController} = require('./controllers/index')
+const { checkId, checkUser, checkEmail, auth } = require('./middlewares/index')
 
 const app = express()
 app.use(cors({
@@ -10,10 +11,13 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(morgan('tiny'));
-// users
 
+app.post('/login', auth, loginController.login)
 app.get('/users', usersController.getUsers);
+app.post('/users', checkEmail, usersController.createUser);
 app.get('/images', imagesController.getImages);
 app.get('/posts', postsController.getPosts);
+app.get('/users/:id', checkId, checkUser, usersController.getUserById);
+app.delete('/posts/:id', postsController.removePost)
 
 module.exports = app;
