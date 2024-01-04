@@ -19,7 +19,20 @@ const removePost = async (req, res) => {
   }
 }
 
+const createPost = async (req, res) => {
+  try {
+    const {title, text} = req.body;
+    const userId = req.user;
+    const response = await postService.createPost(title, text, userId.dataValues.id)
+    return res.status(201).json(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
 module.exports = {
   getPosts,
   removePost,
+  createPost,
 }

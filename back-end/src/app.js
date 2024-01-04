@@ -17,6 +17,7 @@ app.get('/users', usersController.getUsers);
 app.post('/users', checkEmail, usersController.createUser);
 app.get('/images', imagesController.getImages);
 app.get('/posts', postsController.getPosts);
+app.post('/posts', auth, postsController.createPost)
 app.get('/users/:id', checkId, checkUser, usersController.getUserById);
 app.delete('/posts/:id', postsController.removePost)
 
